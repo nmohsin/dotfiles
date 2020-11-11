@@ -33,5 +33,5 @@ machine, in which case you just use the same command as stowing, minus the
 `--adopt` flag.
 
 ``` sh
-$ stow --adopt -nvSt ~ work
+$ stow -vSt ~ work
 ```
