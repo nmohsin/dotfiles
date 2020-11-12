@@ -57,6 +57,11 @@
 (map! :g "M-o" 'other-window
       :g "M-O" 'ace-window)
 
+;; Add shell opening commands to the leader-open menu.
+(map! :leader
+      :desc "Toggle shell popup" :nvm "o s" #'+shell/toggle
+      :desc "Open shell here" :nvm "o S" #'+shell/here)
+
 ;; Visual Regexp steroids.
 (use-package! visual-regexp-steroids
   :defer 3
