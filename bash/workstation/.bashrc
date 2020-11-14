@@ -153,8 +153,8 @@ PROMPT_DIRTRIM=2
 # Add personal scripts to the path.
 export PATH=$PATH:~/bin
 
-# Add Cask to the path.
-export PATH=$PATH:~/.cask/bin
+# Add Doom binaries to the path.
+export PATH=$PATH:~/.emacs.d/bin
 
 # Meld with g4.
 if [ -n "$DISPLAY" ] ; then export G4MULTIDIFF=1 ; fi
