@@ -73,3 +73,32 @@
         :desc "Visual Regexp" :prefix-map "r"
         :desc "Replace" :nvi "r" #'vr/replace
         :desc "Query Replace" :nvi "q" #'vr/query-replace))
+
+;; Allow pasting from the kill ring.
+(map! :nvi "M-p" #'counsel-yank-pop)
+
+;; Show trailing whitespace.
+(setq show-trailing-whitespace t)
+
+;; Auto revert buffers.
+(global-auto-revert-mode)
+
+;; Google-specific packages.
+(use-package! google)
+(use-package! google3)
+(use-package! google-trailing-whitespace)
+(use-package! google3-build-mode)
+(use-package! google-emacs-support)
+(use-package! google3-ffap
+  :config
+  (add-to-list 'ffap-alist (google3-ffap-alist-additions)))
+
+(use-package! web-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.soy$" . web-mode))
+  (setq web-mode-markup-indent-offset 2))
+
+(use-package! css-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.gss\\'" . css-mode))
+  (setq css-indent-offset 2))

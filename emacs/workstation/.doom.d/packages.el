@@ -52,3 +52,13 @@
 ;; Visual Regexp steroids for sane regex searching.
 (package! pcre2el)
 (package! visual-regexp-steroids)
+
+;; Dependency for protobuffer mode.
+(package! aio)
+
+(package! google
+  :recipe (:local-repo "/usr/share/emacs/site-lisp/emacs-google-config/devtools/editors/emacs"))
+
+;; Major modes for frontend development.
+(package! web-mode)
+(package! css-mode)
