@@ -14,6 +14,9 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; Flag for switching on work-specific packages.
+(defconst WORK-CONFIG-P (not (not (string-match-p "google" (system-name)))))
+
 (doom! :input
        ;;chinese
        ;;japanese
