@@ -53,12 +53,6 @@
 (package! pcre2el)
 (package! visual-regexp-steroids)
 
-;; Dependency for protobuffer mode.
-(package! aio)
-
-(package! google
-  :recipe (:local-repo "/usr/share/emacs/site-lisp/emacs-google-config/devtools/editors/emacs"))
-
-;; Major modes for frontend development.
-(package! web-mode)
-(package! css-mode)
+;; Install work specific packages.
+(when WORK-CONFIG-P
+  (load (concat doom-private-dir "work-packages.el")))                             ;
