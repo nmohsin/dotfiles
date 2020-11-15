@@ -70,7 +70,7 @@
   (setq vr/engine 'pcre2el)
   ;; Create a new prefix-map for these functions.
   (map! :leader
-        :desc "Visual Regexp" :prefix-map "r"
+        :prefix ("r" . "Visual Regexp")
         :desc "Replace" :nvi "r" #'vr/replace
         :desc "Query Replace" :nvi "q" #'vr/query-replace))
 

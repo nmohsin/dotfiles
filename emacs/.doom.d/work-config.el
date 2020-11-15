@@ -12,11 +12,11 @@
   (add-to-list 'ffap-alist (google3-ffap-alist-additions)))
 
 (use-package! web-mode
+  :mode ("\\.soy$" . web-mode)
   :config
-  (add-to-list 'auto-mode-alist '("\\.soy$" . web-mode))
   (setq web-mode-markup-indent-offset 2))
 
 (use-package! css-mode
+  :mode ("\\.gss\\'" . css-mode)
   :config
-  (add-to-list 'auto-mode-alist '("\\.gss\\'" . css-mode))
   (setq css-indent-offset 2))
