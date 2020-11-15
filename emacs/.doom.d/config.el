@@ -57,6 +57,12 @@
 (map! :g "M-o" 'other-window
       :g "M-O" 'ace-window)
 
+;; Allow pasting from the kill ring.
+(map! :nvi "M-y" #'counsel-yank-pop)
+
+;; Sorry evil, my muscle memory for C-a/C-e is just too strong.
+(map! :nv "C-e" #'doom/forward-to-last-non-comment-or-eol)
+
 ;; Add shell opening commands to the leader-open menu.
 (map! :leader
       :desc "Toggle shell popup" :nvm "o s" #'+shell/toggle
@@ -74,8 +80,6 @@
         :desc "Replace" :nvi "r" #'vr/replace
         :desc "Query Replace" :nvi "q" #'vr/query-replace))
 
-;; Allow pasting from the kill ring.
-(map! :nvi "M-p" #'counsel-yank-pop)
 
 ;; Show trailing whitespace.
 (setq show-trailing-whitespace t)
