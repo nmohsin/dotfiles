@@ -57,6 +57,9 @@
 (map! :g "M-o" 'other-window
       :g "M-O" 'ace-window)
 
+;; Use M-m for switching buffers.
+(map! :g "M-m" #'ivy-switch-buffer)
+
 ;; Allow pasting from the kill ring.
 (map! :nvi "M-y" #'counsel-yank-pop)
 
