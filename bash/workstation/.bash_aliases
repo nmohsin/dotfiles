@@ -28,6 +28,7 @@ alias mccommit=commitMonarchConfig
 export CORE="java/com/google/lifescience/csp/frontend/core"
 export SCHEMA="lifescience/csp/studies/schema"
 export CONFIG="lifescience/csp/study/config"
+export SUMMARYCARD="java/com/google/lifescience/csp/studies/spec/summarycard/data"
 
 # Files affected by current CL. Turn off coloring to allow piping this.bs
 fst() {
@@ -46,6 +47,11 @@ alias aclcheck="/google/data/ro/projects/ganpati/aclcheck"
 # Span SQL
 alias spansql="span sql --max_output_width=-1 --max_value_lines=-1"
 
+function scprint() {
+  local gclfile=$1
+  local clause=$2
+  gcl $1 print --objtype=studyconfig $2
+}
 
 # Spanner Queue check
 alias queuecheck="spansql /span/global/lifescience-csp:studies-prod \"SELECT FORMAT('%d,%d,%s', Q.RegionId, Q.AccountId, Q.MessageId) AS Key, Q.Payload, Q.DeliverTime FROM AccountsQueue AS Q WHERE Q.DeliverTime < CURRENT_TIMESTAMP();\""
@@ -90,3 +96,35 @@ function dbquery() {
 function breakglass() {
   grants add -r --reason=b/$1 lifescience-csp-oncall:4h
 }
+
+# Board release train.
+alias board_release_train="lifescience/csp/tools/board_release_train/board_release_train.sh"
+
+# Generate test data for new admin groups.
+alias generate_testdata="javatests/com/google/lifescience/csp/study/config/generate_testdata.sh"
+
+# Task id conversion.
+alias task_id_converter="java/com/google/lifescience/csp/tools/task/task_id_converter.sh"
+
+# Admin Session command line tool.
+alias admin_session=/google/data/ro/projects/tonic/admin_session
+
+# Local rpcStudio.
+alias rpcstudio="/google/bin/releases/frameworks-rpc-studio/prod/run.sh"
+
+# Run API with local study config.
+alias run_api_with_config='boq run LifescienceCspStudiesV1Service LifescienceCspFrontendDataService LifescienceCspDebugService'
+
+# Run FE with local API and config.
+alias run_fe_with_config='java/com/google/lifescience/csp/frontend/core/runcspfe.sh -- --local=frontenddata --local=studies --local=debug'
+
+# Get all PRT accounts.
+function getaccounts() {
+  blaze run //experimental/users/chrisso/java/com/google/lifescience/csp/tools/delete:check_registry_participant -- --spanner_db_studies=/span/global/lifescience-csp:studies-prod --participant_id=$1
+}
+
+# Delete PRT account.
+alias delete_participant="java/com/google/lifescience/csp/tools/delete/delete_registry_participants.sh"
+
+# RPC replay.
+alias rpcreplay=/google/data/ro/teams/frameworks-test-team/rpcreplay-cli/live/rpcreplay
